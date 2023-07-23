@@ -13,11 +13,12 @@ window.addEventListener('load', () => {
 
 	newTodoForm.addEventListener('submit', e => {
 		e.preventDefault();
-
+		const dueDate = document.getElementById('due-date').value;
 		const todo = {
 			content: e.target.elements.content.value,
 			category: e.target.elements.category.value,
 			done: false,
+			dueDate: dueDate,
 			createdAt: new Date().getTime()
 		}
 
@@ -63,7 +64,8 @@ function DisplayTodos () {
 		edit.classList.add('edit');
 		deleteButton.classList.add('delete');
 
-		content.innerHTML = `<input type="text" value="${todo.content}" readonly>`;
+		content.innerHTML = `<input type="text" value="${todo.content}" readonly>
+		<p>Due Date: ${todo.dueDate}</p>`;
 		edit.innerHTML = 'Edit';
 		deleteButton.innerHTML = 'Delete';
 
